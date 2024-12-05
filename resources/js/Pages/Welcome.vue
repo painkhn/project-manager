@@ -2,6 +2,8 @@
     import { Head, Link } from '@inertiajs/vue3';
     import Footer from '@/Components/main/Footer.vue'
     import Header from '@/Components/main/Header.vue'
+    import { AlertCircle } from 'lucide-vue-next'
+
 
     const props = defineProps<{
         canLogin?: boolean;
@@ -24,13 +26,16 @@
     <main class="w-full h-full px-10">
         <div class="max-w-7xl mx-auto my-0">
             <h1 class="text-white text-4xl font-bold text-center mt-10 mb-5">Управляйте своими проектами на новом уровне</h1>
-            <p class="text-white/80 text-2xl font-semibold text-center mb-10">
+            <p class="text-white/80 text-2xl font-semibold text-center mb-20">
                 Собирайте команду, создавайте проекты, участвуйте в разных проектах и продвигайте свой аккаунт
             </p>
-            <div v-if="!$page.props.auth.user">
-                <h2 class="text-white text-xl text-center font-semibold">
-                    Войдите в аккаунт, чтобы пользоваться всеми возможностями форума
+            <div v-if="!$page.props.auth.user" class="mb-20">
+                <h2 class="text-white text-xl text-center font-semibold mb-5 flex items-center justify-center gap-2">
+                    <AlertCircle class="text-red-400" /> Войдите в аккаунт, чтобы пользоваться всеми возможностями сервиса
                 </h2>
+                <Link :href="route('login')" class="text-center text-white text-2xl transition-all hover:opacity-80 block">
+                     Войти в аккаунт
+                </Link>
             </div>
         </div>
     </main>

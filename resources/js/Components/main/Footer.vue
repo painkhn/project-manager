@@ -1,5 +1,7 @@
 <script setup lang="ts">
     import { Head, Link } from '@inertiajs/vue3';
+    import { PlusCircle } from 'lucide-vue-next'
+
     
     import {
         Drawer,
@@ -31,11 +33,17 @@
                 <div class="grid grid-cols-3">
                     <div class="justify-self-start">
                         <nav class="flex items-center gap-5">
+                            <Link :href="route('homePage')" class="dark:text-white transition-all hover:opacity-80">
+                                Главная страница
+                            </Link>
                             <Link class="dark:text-white transition-all hover:opacity-80">
                                 Мои проекты
                             </Link>
                             <Link class="dark:text-white transition-all hover:opacity-80">
                                 Приглашения
+                            </Link>
+                            <Link :href="route('project.create.index')" class="dark:text-white transition-all hover:opacity-80">
+                                Создать проект
                             </Link>
                         </nav>
                     </div>
@@ -43,10 +51,10 @@
                     <nav v-if="canLogin" class="justify-sefl-end text-right">
                         <Link
                             v-if="$page.props.auth.user"
-                            :href="route('dashboard')"
+                            :href="route('profile.index', { name: $page.props.auth.user.name})"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                         >
-                            Dashboard
+                            {{ $page.props.auth.user.name }}
                         </Link>
     
                         <template v-else>
