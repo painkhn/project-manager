@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { Head, Link } from '@inertiajs/vue3';
     import Footer from '@/Components/main/Footer.vue'
+    import Header from '@/Components/main/Header.vue'
 
     defineProps<{
         canLogin?: boolean;
@@ -17,6 +18,15 @@
 
 <template>
     <Head title="Welcome" />
+
+    <Header />
+
+    <main class="w-full h-full px-10">
+        <h1 class="text-white text-4xl font-bold text-center mt-10 mb-5">Управляйте своими проектами на новом уровне</h1>
+        <p class="text-white/80 text-2xl font-semibold text-center mb-10">
+            Собирайте команду, создавайте проекты, участвуйте в разных проектах и продвигайте свой аккаунт
+        </p>
+    </main>
     
     <Footer
         :canLogin="canLogin"
