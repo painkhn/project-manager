@@ -3,7 +3,7 @@
     import Footer from '@/Components/main/Footer.vue'
     import Header from '@/Components/main/Header.vue'
 
-    defineProps<{
+    const props = defineProps<{
         canLogin?: boolean;
         canRegister?: boolean;
     }>();
@@ -22,10 +22,17 @@
     <Header />
 
     <main class="w-full h-full px-10">
-        <h1 class="text-white text-4xl font-bold text-center mt-10 mb-5">Управляйте своими проектами на новом уровне</h1>
-        <p class="text-white/80 text-2xl font-semibold text-center mb-10">
-            Собирайте команду, создавайте проекты, участвуйте в разных проектах и продвигайте свой аккаунт
-        </p>
+        <div class="max-w-7xl mx-auto my-0">
+            <h1 class="text-white text-4xl font-bold text-center mt-10 mb-5">Управляйте своими проектами на новом уровне</h1>
+            <p class="text-white/80 text-2xl font-semibold text-center mb-10">
+                Собирайте команду, создавайте проекты, участвуйте в разных проектах и продвигайте свой аккаунт
+            </p>
+            <div v-if="!$page.props.auth.user">
+                <h2 class="text-white text-xl text-center font-semibold">
+                    Войдите в аккаунт, чтобы пользоваться всеми возможностями форума
+                </h2>
+            </div>
+        </div>
     </main>
     
     <Footer
