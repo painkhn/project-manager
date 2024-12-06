@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\{ Project, User };
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\StoreProjectRequest;
@@ -24,9 +25,19 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $user = Auth::id();
+
+        $project = Project::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'start' => $request->start,
+            'end' => $request->end,
+            'user_id' => $user,
+        ]);
+
+        return response()->json(['redirect' => '/']);
     }
 
     /**

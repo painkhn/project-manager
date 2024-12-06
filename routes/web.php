@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(ProjectController::class)->group(function() {
         Route::get('/project/create', 'index')->name('project.create.index');
+        Route::post('/project/new', 'create')->name('project.create');
     });
 });
 
